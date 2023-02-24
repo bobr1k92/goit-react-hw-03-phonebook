@@ -1,3 +1,4 @@
+
 import { Component } from "react";
 import { nanoid } from 'nanoid';
 import Container from "./GlobalContainer/Container";
@@ -8,9 +9,7 @@ import contacts from './contacts.json';
 
 
 
-
-
-class SignContactForm extends Component {
+export class App extends Component {
  
   state = {
     contacts,
@@ -67,25 +66,16 @@ class SignContactForm extends Component {
   render() {
     const { filter } = this.state;
     const contactSearchResult = this.checkSearchContact();
-    
 
     return (
-    <Container>
-        <h2>Phonebook</h2>
-      <Form onSubmit={this.addContact}/>
-      <h2>Contacts</h2>
-      <SearchContact value={filter} onSearch={this.searchContact}/>
-      <ContactList contacts={contactSearchResult} onDelete={this.deleteContact} />
-      </Container>
+      <Container>
+          <h2>Phonebook</h2>
+        <Form onSubmit={this.addContact}/>
+        <h2>Contacts</h2>
+        <SearchContact value={filter} onSearch={this.searchContact}/>
+        <ContactList contacts={contactSearchResult} onDelete={this.deleteContact} />
+        </Container>
     );
-  }
-}
-
-export const App = () => {
-  return (
-    <div>
-      <SignContactForm/>
-    </div>
-  );
+  }; 
 };
 
